@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Joyería MK — Alta Joyería · Santo Domingo</title>
+  <meta name="description" content="Joyería MK — Alta joyería en Santo Domingo. Oro 18k, 14k y 10k. Diamantes certificados y piezas a medida."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{--gold:#C9A84C;--gold2:#E8C97A;--gold3:#A07830;--white:#F5F0E8;--black:#080808;--muted:#7A7470;--border:rgba(201,168,76,0.18);--border2:rgba(201,168,76,0.08)}
+    html{scroll-behavior:smooth}
+    body{font-family:'Montserrat',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:1.3rem 2.5rem;border-bottom:1px solid var(--border2);background:rgba(8,8,8,0.96);backdrop-filter:blur(14px);position:sticky;top:0;z-index:300;transition:padding .4s,border-color .4s}
+    .nav.scrolled{padding:0.9rem 2.5rem;border-color:var(--border)}
+    .logo{display:flex;align-items:center;gap:10px;cursor:default}
+    .logo-diamond{position:relative;width:30px;height:30px;flex-shrink:0}
+    .ld-gem{position:absolute;top:50%;left:50%;width:13px;height:13px;background:var(--gold);transform:translate(-50%,-50%) rotate(45deg);animation:gemBeat 2.8s ease-in-out infinite}
+    @keyframes gemBeat{0%,100%{transform:translate(-50%,-50%) rotate(45deg) scale(1);box-shadow:0 0 0 0 rgba(201,168,76,0.4)}50%{transform:translate(-50%,-50%) rotate(45deg) scale(1.2);box-shadow:0 0 14px 5px rgba(201,168,76,0.22)}}
+    .ld-ring{position:absolute;top:50%;left:50%;width:24px;height:24px;border-radius:50%;border:1px solid rgba(201,168,76,0.55);transform:translate(-50%,-50%);animation:ringExp 2.8s ease-in-out infinite}
+    .ld-ring2{position:absolute;top:50%;left:50%;width:30px;height:30px;border-radius:50%;border:1px solid rgba(201,168,76,0.25);transform:translate(-50%,-50%);animation:ringExp 2.8s ease-in-out infinite .5s}
+    @keyframes ringExp{0%{transform:translate(-50%,-50%) scale(.5);opacity:.9}100%{transform:translate(-50%,-50%) scale(1.7);opacity:0}}
+    .ld-shine{position:absolute;top:50%;left:50%;width:2px;height:12px;background:linear-gradient(transparent,var(--gold2),transparent);transform:translate(-50%,-50%);animation:shineSpin 3s linear infinite}
+    .ld-shine2{position:absolute;top:50%;left:50%;width:12px;height:2px;background:linear-gradient(transparent,var(--gold2),transparent);transform:translate(-50%,-50%);animation:shineSpin2 3s linear infinite}
+    @keyframes shineSpin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+    @keyframes shineSpin2{to{transform:translate(-50%,-50%) rotate(360deg)}}
+    .logo-text{font-family:'Playfair Display',serif;font-size:18px;letter-spacing:.3em;text-transform:uppercase;color:var(--white)}
+    .logo-text span{color:var(--gold)}
+    .nav-links{display:flex;gap:2.2rem}
+    .nav-links a{font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);text-decoration:none;cursor:pointer;position:relative;padding-bottom:3px;transition:color .3s}
+    .nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--gold);transition:width .35s}
+    .nav-links a:hover{color:var(--gold)}
+    .nav-links a:hover::after{width:100%}
+    .nav-cta{font-size:9px;letter-spacing:.28em;text-transform:uppercase;border:1px solid var(--border);color:var(--gold);padding:9px 22px;background:transparent;cursor:pointer;font-family:'Montserrat',sans-serif;position:relative;overflow:hidden;transition:color .3s}
+    .nav-cta::before{content:'';position:absolute;inset:0;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .35s;z-index:0}
+    .nav-cta:hover::before{transform:scaleX(1)}
+    .nav-cta:hover{color:var(--black)}
+    .nav-cta-t{position:relative;z-index:1}
+    .panels{display:grid;grid-template-columns:1fr 1fr 1fr;height:91vh;gap:3px;background:#151008}
+    .panel{position:relative;overflow:hidden;cursor:pointer}
+    .panel-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;transition:transform .9s cubic-bezier(.25,.46,.45,.94)}
+    .panel:hover .panel-bg{transform:scale(1.05)}
+    .panel-1 .panel-bg{background:linear-gradient(160deg,#0D1520,#06090F)}
+    .panel-2 .panel-bg{background:linear-gradient(160deg,#F2ECE0,#E0D8C8)}
+    .panel-3 .panel-bg{background:linear-gradient(160deg,#D0CCC4,#B8B4AC)}
+    .particle{position:absolute;width:3px;height:3px;background:var(--gold);border-radius:50%;opacity:0;animation:particleFloat 4s ease-in-out infinite}
+    @keyframes particleFloat{0%{opacity:0;transform:translateY(0) scale(0)}20%{opacity:.6}80%{opacity:.3}100%{opacity:0;transform:translateY(-90px) scale(.2)}}
+    .p1-icon{font-size:190px;color:rgba(201,168,76,0.15);position:absolute;top:44%;left:50%;transform:translate(-50%,-55%);transition:transform .9s,color .5s}
+    .panel-1:hover .p1-icon{transform:translate(-50%,-55%) scale(1.08);color:rgba(201,168,76,0.3)}
+    .p2-icon{font-size:210px;color:rgba(120,85,25,0.2);position:absolute;top:42%;left:50%;transform:translate(-50%,-54%);transition:transform .9s,color .5s}
+    .panel-2:hover .p2-icon{transform:translate(-50%,-54%) scale(1.08);color:rgba(120,85,25,0.38)}
+    .p3-icon{font-size:190px;color:rgba(80,75,65,0.28);position:absolute;top:46%;left:50%;transform:translate(-50%,-56%);transition:transform .9s,color .5s}
+    .panel-3:hover .p3-icon{transform:translate(-50%,-56%) scale(1.08);color:rgba(80,75,65,0.48)}
+    .shimmer-line{position:absolute;top:53%;left:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.35),transparent);animation:shimmer 3.5s ease-in-out infinite}
+    @keyframes shimmer{0%,100%{opacity:.25;transform:scaleX(.5)}50%{opacity:1;transform:scaleX(1)}}
+    .bracket{position:absolute;width:22px;height:22px;border-color:rgba(201,168,76,0.45);border-style:solid;opacity:0;transition:width .45s,height .45s,opacity .45s}
+    .panel:hover .bracket{opacity:1;width:38px;height:38px}
+    .bracket.tl{top:16px;left:16px;border-width:1px 0 0 1px}.bracket.tr{top:16px;right:16px;border-width:1px 1px 0 0}
+    .bracket.bl{bottom:16px;left:16px;border-width:0 0 1px 1px}.bracket.br{bottom:16px;right:16px;border-width:0 1px 1px 0}
+    .panel-overlay{position:absolute;inset:0;background:rgba(201,168,76,0.03);opacity:0;transition:opacity .5s;pointer-events:none}
+    .panel:hover .panel-overlay{opacity:1}
+    .panel-caption{position:absolute;bottom:0;left:0;right:0;padding:2.8rem 2rem 2.4rem;background:linear-gradient(to top,rgba(0,0,0,.82) 0%,transparent 100%);transition:padding .4s}
+    .panel-2 .panel-caption{background:linear-gradient(to top,rgba(230,225,215,.94) 0%,transparent 100%)}
+    .panel-3 .panel-caption{background:linear-gradient(to top,rgba(170,165,155,.94) 0%,transparent 100%)}
+    .panel:hover .panel-caption{padding-bottom:3rem}
+    .cap-eye{font-size:8px;letter-spacing:.42em;text-transform:uppercase;color:var(--gold);margin-bottom:7px;display:block;opacity:0;transform:translateY(8px);transition:opacity .7s,transform .7s,letter-spacing .4s}
+    .cap-title{font-family:'Playfair Display',serif;font-size:30px;font-weight:400;line-height:1.12;color:var(--white);opacity:0;transform:translateY(14px);transition:opacity .7s .15s,transform .7s .15s}
+    .panel-2 .cap-title,.panel-3 .cap-title{color:#1A1510}
+    .panel-2 .cap-eye,.panel-3 .cap-eye{color:#8A6020}
+    .panel.loaded .cap-eye,.panel.loaded .cap-title{opacity:1;transform:none}
+    .panel:hover .cap-eye{letter-spacing:.52em}
+    .marquee-wrap{overflow:hidden;border-top:1px solid var(--border2);border-bottom:1px solid var(--border2);padding:.8rem 0;background:#0C0A06}
+    .marquee-track{display:flex;gap:3rem;width:max-content;animation:marquee 26s linear infinite}
+    .marquee-track:hover{animation-play-state:paused}
+    @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .mq-item{font-size:8px;letter-spacing:.38em;text-transform:uppercase;color:var(--muted);white-space:nowrap;display:flex;align-items:center;gap:.9rem}
+    .mq-gem{width:5px;height:5px;background:var(--gold);transform:rotate(45deg);flex-shrink:0;animation:gemSpin 5s linear infinite}
+    @keyframes gemSpin{to{transform:rotate(405deg)}}
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--border2)}
+    .stat{padding:2rem 1.5rem;text-align:center;border-right:1px solid var(--border2);position:relative;overflow:hidden;transition:background .4s;cursor:default}
+    .stat:last-child{border-right:none}
+    .stat::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--gold);transition:width .5s}
+    .stat:hover::after{width:100%}
+    .stat:hover{background:#0E0C08}
+    .stat-n{font-family:'Playfair Display',serif;font-size:30px;color:var(--gold);display:block;margin-bottom:4px;transition:transform .3s}
+    .stat:hover .stat-n{transform:scale(1.07)}
+    .stat-l{font-size:8px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
+    .gold-display{padding:5.5rem 2.5rem;background:var(--black)}
+    .gd-head{text-align:center;margin-bottom:4rem}
+    .gd-eye{font-size:9px;letter-spacing:.45em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+    .gd-title{font-family:'Playfair Display',serif;font-size:44px;font-weight:400;color:var(--white);line-height:1.1}
+    .gd-title em{font-style:italic;color:var(--gold2)}
+    .gold-rule{width:32px;height:1px;background:var(--gold);margin:1.6rem auto;opacity:.5}
+    .karat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;background:#1a1508}
+    .karat{position:relative;overflow:hidden;transition:background .5s;cursor:default}
+    .karat:hover{background:#100E06}
+    .karat-visual{height:260px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+    .k1 .karat-visual{background:linear-gradient(145deg,#1A1206,#0C0902)}
+    .k2 .karat-visual{background:linear-gradient(145deg,#16120A,#0A0806)}
+    .k3 .karat-visual{background:linear-gradient(145deg,#121010,#080706)}
+    .karat-num{font-family:'Playfair Display',serif;font-size:110px;font-weight:400;position:absolute;line-height:1;animation:numFloat 6s ease-in-out infinite}
+    .k1 .karat-num{color:rgba(232,201,122,.12)}.k2 .karat-num{color:rgba(201,168,76,.1);animation-delay:1s}.k3 .karat-num{color:rgba(160,120,48,.1);animation-delay:2s}
+    @keyframes numFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    .karat-icon{font-size:64px;position:relative;z-index:2;transition:transform .7s,color .5s}
+    .k1 .karat-icon{color:rgba(232,201,122,.4)}.k2 .karat-icon{color:rgba(201,168,76,.35)}.k3 .karat-icon{color:rgba(160,120,48,.3)}
+    .karat:hover .karat-icon{transform:scale(1.1) translateY(-4px)}
+    .k1:hover .karat-icon{color:rgba(232,201,122,.72)}.k2:hover .karat-icon{color:rgba(201,168,76,.67)}.k3:hover .karat-icon{color:rgba(160,120,48,.62)}
+    .karat-shimmer{position:absolute;bottom:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);transform:scaleX(0);transform-origin:center;transition:transform .6s}
+    .karat:hover .karat-shimmer{transform:scaleX(1)}
+    .karat-particles{position:absolute;inset:0;pointer-events:none}
+    .kp{position:absolute;width:2px;height:2px;border-radius:50%;background:var(--gold);opacity:0;animation:kpFloat 3s ease-in-out infinite}
+    @keyframes kpFloat{0%{opacity:0;transform:translateY(20px) scale(0)}40%{opacity:.7}100%{opacity:0;transform:translateY(-45px) scale(.2)}}
+    .karat-body{padding:1.8rem 2rem 2.2rem;border-top:1px solid var(--border2);position:relative}
+    .karat-body::before{content:'';position:absolute;top:0;left:0;width:0;height:1px;background:var(--gold);transition:width .6s}
+    .karat:hover .karat-body::before{width:100%}
+    .kb-karat{font-family:'Playfair Display',serif;font-size:36px;line-height:1;margin-bottom:4px}
+    .k1 .kb-karat{color:var(--gold2)}.k2 .kb-karat{color:var(--gold)}.k3 .kb-karat{color:var(--gold3)}
+    .kb-name{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--white);margin-bottom:8px}
+    .kb-desc{font-size:11px;line-height:1.8;color:var(--muted);font-weight:300;margin-bottom:14px}
+    .kb-purity{display:flex;align-items:center;gap:8px}
+    .purity-bar{flex:1;height:2px;background:rgba(255,255,255,.06);border-radius:1px;overflow:hidden}
+    .purity-fill{height:100%;border-radius:1px;width:0;transition:width 1.4s ease}
+    .k1 .purity-fill{background:var(--gold2)}.k2 .purity-fill{background:var(--gold)}.k3 .purity-fill{background:var(--gold3)}
+    .purity-label{font-size:9px;letter-spacing:.2em;color:var(--muted);white-space:nowrap}
+    .ticker{padding:1.4rem 0;background:#0C0A06;border-top:1px solid var(--border2);border-bottom:1px solid var(--border2);overflow:hidden}
+    .ticker-track{display:flex;width:max-content;animation:marquee 18s linear infinite reverse}
+    .ticker-item{font-family:'Playfair Display',serif;font-size:22px;font-style:italic;color:rgba(201,168,76,.22);padding:0 2.5rem;white-space:nowrap;border-right:1px solid rgba(201,168,76,.1);transition:color .3s}
+    .ticker-item:hover{color:rgba(201,168,76,.7)}
+    .split-reveal{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--border2);min-height:400px}
+    .sr-dark{background:linear-gradient(135deg,#0A0806,#111008);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:4rem;border-right:1px solid var(--border2)}
+    .sr-light{background:linear-gradient(135deg,#E8E0D0,#D8D0BC);display:flex;align-items:center;justify-content:center;padding:4rem}
+    .orbit-ring{position:absolute;width:220px;height:220px;border-radius:50%;border:1px solid rgba(201,168,76,.15);animation:orbitSpin 12s linear infinite}
+    @keyframes orbitSpin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+    .orbit-gem{position:absolute;top:-5px;left:50%;margin-left:-5px;width:10px;height:10px;background:var(--gold);transform:rotate(45deg)}
+    .orbit-ring2{width:160px;height:160px;animation-duration:8s;animation-direction:reverse;border-color:rgba(201,168,76,.1)}
+    .orbit-gem2{top:-4px;width:8px;height:8px;margin-left:-4px;background:var(--gold2)}
+    .sr-content{position:relative;z-index:2;text-align:center}
+    .sr-icon{font-size:52px;color:var(--gold);margin-bottom:1.4rem;display:block;animation:iconGlow 3s ease-in-out infinite}
+    @keyframes iconGlow{0%,100%{filter:drop-shadow(0 0 0 transparent)}50%{filter:drop-shadow(0 0 14px rgba(201,168,76,.55))}}
+    .sr-eye{font-size:8px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem}
+    .sr-title{font-family:'Playfair Display',serif;font-size:30px;color:var(--white);line-height:1.2;margin-bottom:.8rem}
+    .sr-sub{font-size:11px;color:var(--muted);line-height:1.7;font-weight:300}
+    .gold-line-anim{height:1px;background:linear-gradient(90deg,transparent,var(--gold),var(--gold2),var(--gold),transparent);background-size:200% 100%;animation:lineShift 3s linear infinite}
+    @keyframes lineShift{0%{background-position:200% 0}100%{background-position:-200% 0}}
+    .dark-banner{min-height:320px;background:linear-gradient(135deg,#0A0806,#060402);display:flex;align-items:center;justify-content:center;text-align:center;padding:5rem 2rem;position:relative;overflow:hidden;border-top:1px solid var(--border2);border-bottom:1px solid var(--border2)}
+    .db-bg-text{position:absolute;font-family:'Playfair Display',serif;font-size:180px;color:rgba(201,168,76,.04);top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;pointer-events:none;animation:bgDrift 14s ease-in-out infinite alternate}
+    @keyframes bgDrift{from{transform:translate(-52%,-50%)}to{transform:translate(-48%,-50%)}}
+    .db-gem-spin{position:absolute;width:300px;height:300px;top:50%;left:50%;transform:translate(-50%,-50%);border:1px solid rgba(201,168,76,.06);border-radius:50%;animation:orbitSpin 20s linear infinite}
+    .db-gem-dot{position:absolute;top:-4px;left:50%;margin-left:-4px;width:8px;height:8px;background:var(--gold);transform:rotate(45deg);animation:gemBeat 2.8s ease-in-out infinite}
+    .db-gem-spin2{position:absolute;width:200px;height:200px;top:50%;left:50%;transform:translate(-50%,-50%);border:1px solid rgba(201,168,76,.04);border-radius:50%;animation:orbitSpin 14s linear infinite reverse}
+    .db-gem-dot2{position:absolute;top:-3px;left:50%;margin-left:-3px;width:6px;height:6px;background:var(--gold2);transform:rotate(45deg)}
+    .db-content{position:relative;z-index:2}
+    .db-eye{font-size:9px;letter-spacing:.45em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem}
+    .db-title{font-family:'Playfair Display',serif;font-size:52px;color:var(--white);line-height:1.05;margin-bottom:1rem}
+    .db-title em{font-style:italic;color:var(--gold2)}
+    .db-sub{font-size:11px;letter-spacing:.2em;color:var(--muted);margin-bottom:2.5rem;font-weight:300}
+    .btn-wa{display:inline-flex;align-items:center;gap:10px;font-size:9px;letter-spacing:.28em;text-transform:uppercase;background:var(--gold);color:var(--black);padding:14px 34px;border:1px solid var(--gold);cursor:pointer;font-family:'Montserrat',sans-serif;font-weight:500;position:relative;overflow:hidden;transition:color .3s;text-decoration:none}
+    .btn-wa::after{content:'';position:absolute;inset:0;background:var(--gold2);transform:scaleX(0);transform-origin:left;transition:transform .4s;z-index:0}
+    .btn-wa:hover::after{transform:scaleX(1)}
+    .btn-wa span,.btn-wa i{position:relative;z-index:1}
+    .showcase{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--border2)}
+    .sc-vis{height:400px;background:linear-gradient(145deg,#0D1520,#060810);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border-right:1px solid var(--border2)}
+    .sc-vis i{font-size:100px;color:rgba(201,168,76,.18);transition:transform .8s,color .5s;z-index:2;position:relative}
+    .showcase:hover .sc-vis i{transform:scale(1.1);color:rgba(201,168,76,.36)}
+    .sc-corner{position:absolute;width:26px;height:26px;border-color:rgba(201,168,76,.4);border-style:solid;transition:width .45s,height .45s}
+    .showcase:hover .sc-corner{width:42px;height:42px}
+    .sc-corner.tl{top:18px;left:18px;border-width:1px 0 0 1px}.sc-corner.tr{top:18px;right:18px;border-width:1px 1px 0 0}
+    .sc-corner.bl{bottom:18px;left:18px;border-width:0 0 1px 1px}.sc-corner.br{bottom:18px;right:18px;border-width:0 1px 1px 0}
+    .sc-body{padding:3.5rem;display:flex;flex-direction:column;justify-content:center;background:#0A0806}
+    .sc-eye{font-size:8px;letter-spacing:.45em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem}
+    .sc-title{font-family:'Playfair Display',serif;font-size:38px;color:var(--white);line-height:1.15;margin-bottom:1.2rem}
+    .sc-title em{font-style:italic;color:var(--gold2)}
+    .sc-rule{width:24px;height:1px;background:var(--gold);margin-bottom:1.4rem;opacity:.5}
+    .sc-text{font-size:11px;line-height:1.9;color:var(--muted);margin-bottom:2.2rem;font-weight:300}
+    .contact{padding:5.5rem 2.5rem;background:var(--black)}
+    .sh{text-align:center;margin-bottom:3.5rem}
+    .sh-eye{font-size:9px;letter-spacing:.45em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+    .sh-title{font-family:'Playfair Display',serif;font-size:42px;color:var(--white)}
+    .cc-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;background:#1a1508;max-width:680px;margin:0 auto}
+    .cc{background:#0C0A06;padding:2.5rem 2rem;position:relative;overflow:hidden;transition:background .4s;text-decoration:none;display:block}
+    .cc::before{content:'';position:absolute;top:0;left:0;width:100%;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .45s}
+    .cc:hover::before{transform:scaleX(1)}
+    .cc:hover{background:#111008}
+    .cc-icon-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center;margin-bottom:1.1rem}
+    .cc-pulse{position:absolute;width:50px;height:50px;border-radius:50%;border:1px solid currentColor;opacity:0;animation:ccPulse 2.5s ease-out infinite}
+    .cc-pulse2{animation-delay:.8s}
+    @keyframes ccPulse{0%{transform:scale(.5);opacity:.6}100%{transform:scale(1.4);opacity:0}}
+    .cc-wa .cc-pulse{color:#25D366}.cc-ig .cc-pulse{color:var(--gold)}
+    .cc-icon{font-size:28px;transition:transform .4s,filter .4s;display:block}
+    .cc:hover .cc-icon{transform:scale(1.15);filter:drop-shadow(0 0 8px currentColor)}
+    .cc-wa .cc-icon{color:#25D366}.cc-ig .cc-icon{color:var(--gold)}
+    .cc-title{font-family:'Playfair Display',serif;font-size:19px;color:var(--white);margin-bottom:.4rem}
+    .cc-handle{font-size:10px;letter-spacing:.15em;color:var(--muted);margin-bottom:1rem;font-weight:300}
+    .cc-desc{font-size:11px;line-height:1.8;color:var(--muted);margin-bottom:1.6rem;font-weight:300}
+    .cc-btn{display:flex;align-items:center;justify-content:center;gap:8px;font-size:9px;letter-spacing:.2em;text-transform:uppercase;padding:12px 20px;border:none;cursor:pointer;font-family:'Montserrat',sans-serif;font-weight:500;width:100%;transition:background .3s,transform .2s}
+    .cc-btn:hover{transform:translateY(-1px)}
+    .cc-wa .cc-btn{background:#25D366;color:#080808}.cc-wa .cc-btn:hover{background:#1fc25c}
+    .cc-ig .cc-btn{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:white}.cc-ig .cc-btn:hover{opacity:.9}
+    footer{padding:1.8rem 2.5rem;border-top:1px solid var(--border2);display:flex;align-items:center;justify-content:space-between;background:var(--black)}
+    .fl{font-family:'Playfair Display',serif;font-size:14px;letter-spacing:.28em;text-transform:uppercase;color:rgba(245,240,232,.28)}
+    .fl span{color:rgba(201,168,76,.5)}
+    .fc{font-size:8px;color:rgba(245,240,232,.15);letter-spacing:.12em}
+    .f-ig{display:flex;align-items:center;gap:6px;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(245,240,232,.25);text-decoration:none;transition:color .3s}
+    .f-ig:hover{color:var(--gold)}
+    .rv{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s ease}
+    .rv.on{opacity:1;transform:none}
+    .rl{opacity:0;transform:translateX(-28px);transition:opacity .9s ease,transform .9s ease}
+    .rl.on{opacity:1;transform:none}
+    .rr{opacity:0;transform:translateX(28px);transition:opacity .9s ease,transform .9s ease}
+    .rr.on{opacity:1;transform:none}
+    .d1{transition-delay:.05s}.d2{transition-delay:.15s}.d3{transition-delay:.25s}
+    .d4{transition-delay:.35s}.d5{transition-delay:.45s}.d6{transition-delay:.55s}
+  </style>
+</head>
+<body>
+  <nav class="nav" id="nav">
+    <div class="logo">
+      <div class="logo-diamond">
+        <div class="ld-ring"></div><div class="ld-ring2"></div>
+        <div class="ld-gem"></div><div class="ld-shine"></div><div class="ld-shine2"></div>
+      </div>
+      <div class="logo-text">Joyería <span>MK</span></div>
+    </div>
+    <div class="nav-links">
+      <a href="#contacto">Contacto</a>
+    </div>
+    <button class="nav-cta" onclick="window.open('https://wa.me/18297143485?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20una%20cita%20en%20Joyer%C3%ADa%20MK','_blank')">
+      <span class="nav-cta-t">Reservar cita</span>
+    </button>
+  </nav>
+
+  <div class="panels">
+    <div class="panel panel-1">
+      <div class="panel-bg">
+        <i class="ti ti-diamond p1-icon"></i>
+        <div class="shimmer-line"></div>
+        <span class="particle" style="left:28%;animation-delay:0s;animation-duration:3.5s"></span>
+        <span class="particle" style="left:55%;animation-delay:1.3s;animation-duration:4s"></span>
+        <span class="particle" style="left:78%;animation-delay:2.5s;animation-duration:3.2s"></span>
+      </div>
+      <div class="bracket tl"></div><div class="bracket tr"></div><div class="bracket bl"></div><div class="bracket br"></div>
+      <div class="panel-overlay"></div>
+      <div class="panel-caption"><span class="cap-eye">Joyería MK presenta</span><h2 class="cap-title">Colección<br>Eternelle</h2></div>
+    </div>
+    <div class="panel panel-2">
+      <div class="panel-bg"><i class="ti ti-star p2-icon"></i></div>
+      <div class="bracket tl"></div><div class="bracket tr"></div><div class="bracket bl"></div><div class="bracket br"></div>
+      <div class="panel-overlay"></div>
+      <div class="panel-caption"><span class="cap-eye">Piedras preciosas</span><h2 class="cap-title">Cada piedra,<br>su propia alma</h2></div>
+    </div>
+    <div class="panel panel-3">
+      <div class="panel-bg"><i class="ti ti-crown p3-icon"></i></div>
+      <div class="bracket tl"></div><div class="bracket tr"></div><div class="bracket bl"></div><div class="bracket br"></div>
+      <div class="panel-overlay"></div>
+      <div class="panel-caption"><span class="cap-eye">Alta joyería</span><h2 class="cap-title">Relojes &amp;<br>Accesorios MK</h2></div>
+    </div>
+  </div>
+
+  <div class="marquee-wrap"><div class="marquee-track" id="mq"></div></div>
+
+  <div class="stats">
+    <div class="stat rv d1"><span class="stat-n">20+</span><span class="stat-l">Años de experiencia</span></div>
+    <div class="stat rv d2"><span class="stat-n">500+</span><span class="stat-l">Piezas únicas</span></div>
+    <div class="stat rv d3"><span class="stat-n">100%</span><span class="stat-l">Certificado autenticidad</span></div>
+    <div class="stat rv d4"><span class="stat-n">18k</span><span class="stat-l">Oro garantizado</span></div>
+  </div>
+
+  <section class="gold-display" id="gold-section">
+    <div class="gd-head rv">
+      <p class="gd-eye">Nuestros oros</p>
+      <h2 class="gd-title">El oro <em>perfecto</em><br>para cada ocasión</h2>
+      <div class="gold-rule"></div>
+    </div>
+    <div class="karat-grid">
+      <div class="karat k1 rv d1">
+        <div class="karat-visual"><span class="karat-num">18</span><i class="ti ti-diamond karat-icon"></i><div class="karat-particles"><span class="kp" style="left:20%;bottom:10%;animation-delay:0s;animation-duration:2.5s"></span><span class="kp" style="left:50%;bottom:15%;animation-delay:1s;animation-duration:3s"></span><span class="kp" style="left:75%;bottom:8%;animation-delay:2s;animation-duration:2.8s"></span></div><div class="karat-shimmer"></div></div>
+        <div class="karat-body"><p class="kb-karat">Oro 18k</p><p class="kb-name">75% Pureza — Premium</p><p class="kb-desc">El estándar de la alta joyería. Color intenso, brillo inigualable y resistencia superior para piezas que duran generaciones.</p><div class="kb-purity"><div class="purity-bar"><div class="purity-fill" data-width="75%"></div></div><span class="purity-label">75% oro puro</span></div></div>
+      </div>
+      <div class="karat k2 rv d2">
+        <div class="karat-visual"><span class="karat-num">14</span><i class="ti ti-crown karat-icon"></i><div class="karat-particles"><span class="kp" style="left:25%;bottom:12%;animation-delay:.5s;animation-duration:3.2s"></span><span class="kp" style="left:60%;bottom:10%;animation-delay:1.5s;animation-duration:2.6s"></span><span class="kp" style="left:80%;bottom:18%;animation-delay:2.5s;animation-duration:3s"></span></div><div class="karat-shimmer"></div></div>
+        <div class="karat-body"><p class="kb-karat">Oro 14k</p><p class="kb-name">58.3% Pureza — Clásico</p><p class="kb-desc">El equilibrio perfecto entre lujo y durabilidad. Ideal para joyería de uso diario con un acabado elegante y atemporal.</p><div class="kb-purity"><div class="purity-bar"><div class="purity-fill" data-width="58.3%"></div></div><span class="purity-label">58.3% oro puro</span></div></div>
+      </div>
+      <div class="karat k3 rv d3">
+        <div class="karat-visual"><span class="karat-num">10</span><i class="ti ti-star karat-icon"></i><div class="karat-particles"><span class="kp" style="left:30%;bottom:14%;animation-delay:1s;animation-duration:2.9s"></span><span class="kp" style="left:55%;bottom:8%;animation-delay:2s;animation-duration:3.5s"></span><span class="kp" style="left:70%;bottom:16%;animation-delay:.8s;animation-duration:2.7s"></span></div><div class="karat-shimmer"></div></div>
+        <div class="karat-body"><p class="kb-karat">Oro 10k</p><p class="kb-name">41.7% Pureza — Accesible</p><p class="kb-desc">Alta resistencia al desgaste con un precio más accesible. Perfecto para joyería casual sin sacrificar la autenticidad del oro.</p><div class="kb-purity"><div class="purity-bar"><div class="purity-fill" data-width="41.7%"></div></div><span class="purity-label">41.7% oro puro</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="gold-line-anim"></div>
+  <div class="ticker"><div class="ticker-track" id="ticker"></div></div>
+
+  <div class="split-reveal">
+    <div class="sr-dark rl">
+      <div class="orbit-ring"><div class="orbit-gem"></div></div>
+      <div class="orbit-ring orbit-ring2"><div class="orbit-gem orbit-gem2"></div></div>
+      <div class="sr-content"><i class="ti ti-diamond sr-icon"></i><p class="sr-eye">Alta Joyería</p><h3 class="sr-title">Diamantes<br>certificados</h3><p class="sr-sub">Cada diamante acompañado de su certificado GIA para garantía y valor permanente.</p></div>
+    </div>
+    <div class="sr-light rr">
+      <div class="sr-content"><i class="ti ti-heart sr-icon" style="color:#8A6020;animation:none"></i><p class="sr-eye" style="color:#8A6020">Para siempre</p><h3 class="sr-title" style="color:#1A1510">Piezas de<br>compromiso</h3><p class="sr-sub" style="color:#6A6050">Anillos, collares y aretes diseñados para los momentos que nunca se olvidan.</p></div>
+    </div>
+  </div>
+
+  <div class="gold-line-anim"></div>
+
+  <div class="dark-banner rv">
+    <div class="db-bg-text">MK</div>
+    <div class="db-gem-spin"><div class="db-gem-dot"></div></div>
+    <div class="db-gem-spin2"><div class="db-gem-dot2"></div></div>
+    <div class="db-content">
+      <p class="db-eye">Joyería MK · Santo Domingo</p>
+      <h2 class="db-title">El lujo no es<br>un precio. Es <em>una historia.</em></h2>
+      <p class="db-sub">Más de 20 años creando joyas que se convierten en herencias</p>
+      <a class="btn-wa" href="https://wa.me/18297143485?text=Hola%2C%20me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20las%20joyas%20de%20Joyer%C3%ADa%20MK" target="_blank" rel="noopener">
+        <i class="ti ti-brand-whatsapp"></i><span>Contáctanos</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="showcase">
+    <div class="sc-vis rl">
+      <div class="sc-corner tl"></div><div class="sc-corner tr"></div><div class="sc-corner bl"></div><div class="sc-corner br"></div>
+      <i class="ti ti-tools"></i>
+    </div>
+    <div class="sc-body rr">
+      <p class="sc-eye">Piezas a medida</p>
+      <h2 class="sc-title">Creamos la pieza<br><em>de tu vida</em></h2>
+      <div class="sc-rule"></div>
+      <p class="sc-text">Nuestros maestros orfebres trabajan junto a ti desde el primer boceto hasta la pieza terminada. Cada detalle refleja tu historia única.</p>
+      <a class="btn-wa" href="https://wa.me/18297143485?text=Hola%2C%20me%20interesa%20solicitar%20el%20dise%C3%B1o%20de%20una%20pieza%20a%20medida%20en%20Joyer%C3%ADa%20MK" target="_blank" rel="noopener">
+        <i class="ti ti-brand-whatsapp"></i><span>Solicitar diseño</span>
+      </a>
+    </div>
+  </div>
+
+  <section class="contact" id="contacto">
+    <div class="sh rv"><p class="sh-eye">Estamos para ti</p><h2 class="sh-title">Contáctanos</h2><div class="gold-rule"></div></div>
+    <div class="cc-grid">
+      <a class="cc cc-wa rl" href="https://wa.me/18297143485?text=Hola%2C%20me%20interesa%20una%20pieza%20de%20Joyer%C3%ADa%20MK" target="_blank" rel="noopener">
+        <div class="cc-icon-wrap"><div class="cc-pulse"></div><div class="cc-pulse cc-pulse2"></div><i class="ti ti-brand-whatsapp cc-icon"></i></div>
+        <h3 class="cc-title">WhatsApp</h3><p class="cc-handle">+1 (829) 714-3485</p>
+        <p class="cc-desc">Escríbenos para consultas, pedidos a medida o reservar tu visita a la boutique. Respondemos al instante.</p>
+        <span class="cc-btn"><i class="ti ti-brand-whatsapp"></i> Escribir ahora</span>
+      </a>
+      <a class="cc cc-ig rr" href="https://www.instagram.com/mk.jewerly?igsh=N2Q1dTRmYzE2eHp6" target="_blank" rel="noopener">
+        <div class="cc-icon-wrap"><div class="cc-pulse"></div><div class="cc-pulse cc-pulse2"></div><i class="ti ti-brand-instagram cc-icon"></i></div>
+        <h3 class="cc-title">Instagram</h3><p class="cc-handle">@mk.jewerly</p>
+        <p class="cc-desc">Sigue nuestras últimas piezas, colecciones exclusivas y el proceso artesanal de cada joya.</p>
+        <span class="cc-btn"><i class="ti ti-brand-instagram"></i> Ver perfil</span>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="fl">Joyería <span>MK</span></div>
+    <p class="fc">© 2025 Joyería MK · Todos los derechos reservados</p>
+    <a class="f-ig" href="https://www.instagram.com/mk.jewerly?igsh=N2Q1dTRmYzE2eHp6" target="_blank" rel="noopener"><i class="ti ti-brand-instagram"></i> @mk.jewerly</a>
+  </footer>
+
+  <script>
+    const mqItems=['Alta Joyería','Oro 18k','Oro 14k','Oro 10k','Diamantes Certificados','Diseño Exclusivo','Platino','Esmeraldas','Rubíes','Zafiros','Piezas a Medida','Santo Domingo'];
+    const mq=document.getElementById('mq');
+    [...mqItems,...mqItems].forEach(t=>{const el=document.createElement('span');el.className='mq-item';el.innerHTML=`<span class="mq-gem"></span>${t}`;mq.appendChild(el)});
+    const tkItems=['Eternelle','Héritage','Signature','Oro 18k','Platino','Brillantes','Zafiros','Rubíes','Esmeraldas','Diamantes','Alta Joyería'];
+    const tk=document.getElementById('ticker');
+    [...tkItems,...tkItems,...tkItems].forEach(t=>{const el=document.createElement('span');el.className='ticker-item';el.textContent=t;tk.appendChild(el)});
+    window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',scrollY>60)},{passive:true});
+    const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')})},{threshold:0.1});
+    document.querySelectorAll('.rv,.rl,.rr').forEach(el=>io.observe(el));
+    setTimeout(()=>{document.querySelectorAll('.panel').forEach((p,i)=>setTimeout(()=>p.classList.add('loaded'),i*250))},400);
+    const barObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.purity-fill').forEach(f=>{f.style.width=f.dataset.width});barObs.unobserve(e.target)}})},{threshold:0.3});
+    document.querySelectorAll('.karat').forEach(k=>barObs.observe(k));
+  </script>
+</body>
+</html>
